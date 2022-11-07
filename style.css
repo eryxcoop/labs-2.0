@@ -133,6 +133,10 @@ main {
   color: white;
 }
 
+.intro-remark {
+  color: orange;
+}
+
 /* Menú de proyectos */
 
 .project-menu {
@@ -212,10 +216,17 @@ main {
   top: 0;
   left: 0;
   height: 100%;
+  width: 50%;
+  margin-left: 18rem;
+}
+
+.intro-project-container p{
+  font-size: 2.2rem;
+  font-weight: 700;
 }
 
 .mora-project-container {
-  padding: 5rem;
+  padding: 18rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -231,12 +242,12 @@ main {
   flex-direction: row;
   justify-content: center;
   align-content: center;
+  margin-bottom: 6rem;
 }
 
 .text-summary {
   flex: 2;
   font-size: 2.4rem;
-  padding: 5rem;
 }
 
 .colaborators-container {
@@ -250,6 +261,17 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.collaborator p {
+  margin: 15px 0 0 0;
+}
+
+.collaborator a {
+  font-weight: 800;
+  text-decoration: none;
 }
 
 .collaborator span {
@@ -263,18 +285,24 @@ main {
 .images-gallery {
   display: flex;
   flex-direction: row;
-  align-content: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 6rem;
 }
 
 .image-cel-mora {
   height: 600px;
   width: 400px;
-  margin-right: 2rem;
 }
 
 .text-more-info {
   font-size: 2rem;
-  width: 80%;
+  width: 100%;
+  text-align: justify;
+}
+
+iframe {
+  margin: 5rem 0;
 }
 
 .links-container {
