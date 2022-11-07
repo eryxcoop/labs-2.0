@@ -13,10 +13,10 @@ const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerH
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
-  canvas: document.querySelector('#bg'),
+  canvas: document.querySelector('#astronaut-canvas'),
 });
 
-const glftLoader = new GLTFLoader()
+const glftLoader = new GLTFLoader();
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -31,7 +31,7 @@ window.addEventListener('resize', () => {
   camera.aspect = window.innerWidth/ window.innerHeight;
 
   camera.updateProjectionMatrix();
-})
+});
 
 // Lights
 
@@ -103,22 +103,29 @@ particleGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors
 const particlesMesh = new THREE.Points(particleGeometry, material)
 scene.add(particlesMesh);
 
+// Earth
+
+let earth = undefined
+glftLoader.load("earth.glb", (glft) => {
+  earth = glft.scene;
+  scene.add(earth);
+  earth.position.z = -3;
+  earth.position.x = 2;
+})
+
+
 // Background
 
-scene.background = new THREE.Color('#21282a');
+scene.background = new THREE.Color('#1a1a1a');
 
 // Scroll Animation
 
-function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
+const t = document.body.getBoundingClientRect().top;
 
-  camera.position.z = t * 0.0001;
-  camera.position.x = t * -0.00005;
-  camera.rotation.y = t * -0.00002;
-}
+camera.position.z = t * 0.0001;
+camera.position.x = t * -0.00005;
+camera.rotation.y = t * -0.00002;
 
-document.body.onscroll = moveCamera;
-moveCamera();
 
 // Animation Loop
 

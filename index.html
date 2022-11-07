@@ -7,11 +7,18 @@
     <title>Eryxs Labs</title>
   </head>
   <body>
-    <canvas id="bg"></canvas>   
+    <canvas id="bg" class="canvas-space"></canvas>   
     <main>
       <div class="drawer-veil-2" id="drawer-veil-2"></div>
 
-      <div id="menu-btn">MENU</div>
+      <!-- Menu fijo -->
+      <div id="logo">
+        <img class="project-image" src="imagenes/logo.svg" alt="logo">
+      </div>
+      <a id="projects-btn" href="#project-menu">Proyectos</a>
+      <button id="contact-us-btn" onclick="() => console.log(2)">CONTACTO</button>
+
+      <!-- Fin menu fijo -->
 
       <section class="page">
         <div class="elem head">
@@ -61,39 +68,25 @@
         </div>
       </section>
 
-      <section class="page">
-        <div class="elem prim">
-          <p>
-            OUR PROYECTS
-          </p>
-        </div>
-      </section>
+      <!-- Menú de proyectos -->
 
-      <section class="page project-page">
-        <div class="elem prim project">
-          <h2>
-            SUSTENTABILIDAD SIN FRONTERAS
-          </h2>
-          <p>
-            NOS UNIMOS PARA DISEÑAR Y DESARROLLAR UNA CALCULADORA DE HUELLA DE CARBONO
-          </p>
-          <button>Ver más</button>
+      <section id="project-menu" class="project-menu">
+        <div class="projects-info">
+          <h1>Proyectos</h1>
+          <ul class="project-list">
+            <li>Sustentabilidad <br>sin Fronteras</li>
+            <li>MORA</li>
+            <li>FADU viva</li>
+            <li>Aurora</li>
+            <li>Fundación <br> Huesped</li>
+          </ul>
         </div>
-
-        <img class="img-project" src="labs1.jpg" alt="MDN">
-      </section>
-
-      <section class="page project-page">
-        <img class="img-project" src="labs1.jpg" alt="MDN">
-        <div class="elem prim project">
-          <h2>
-            AURORA
-          </h2>
-          <p>
-            NOS UNIMOS PARA DISEÑAR Y DESARROLLAR UNA CALCULADORA DE HUELLA DE CARBONO
-          </p>
-          <button>Ver más</button>
-        </div>
+        <a href="mora.html">
+          <img class="project-image" src="imagenes/fadu_viva.png" alt="ssf">
+        </a>
+        <img style="display:none" class="project-image" src="imagenes/mora.png" alt="mora">
+        <img style="display:none" class="project-image" src="imagenes/aurora.jpg" alt="mora">
+        <img style="display:none" class="project-image" src="imagenes/mora.png" alt="mora">
       </section>
 
       <div class="drawer-veil" id="drawer-veil"></div>

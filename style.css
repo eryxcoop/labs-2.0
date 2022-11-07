@@ -2,13 +2,14 @@
 
 body { 
   margin: 0; 
+  overflow-x: hidden;
 }
 
 /* body::-webkit-scrollbar {
   display: none;
 } */
 
-canvas {
+.canvas-space {
   position: fixed;
   display: block;
   top: 0;
@@ -26,7 +27,6 @@ canvas {
 .menu-container {
   display: none;
 }
-
 
 :root {
   --dark-bg: rgba(15, 15, 15, 0.95);
@@ -47,6 +47,59 @@ main {
   margin: 0px;
   padding: 0px;
 }
+
+/* Botones fijos */
+
+#logo {
+  position: fixed;
+  font-weight: 200;
+  top: 0;
+  left: 1px;
+  z-index: 999;
+}
+
+#logo img {
+  height: 80px;
+  width: 180px;
+}
+
+#projects-btn {
+  position: fixed;
+  font-weight: 200;
+  top: 0;
+  right: 1px;
+  z-index: 999;
+}
+
+#contact-us-btn {
+  position: fixed;
+  font-weight: 200;
+  bottom: 0;
+  right: 1px;
+  z-index: 999;
+}
+
+#previous-btn {
+  position: fixed;
+  font-weight: 200;
+  top: 50%;
+  left: 1px;
+
+  color: white;
+  z-index: 999;
+}
+
+#next-btn {
+  position: fixed;
+  font-weight: 200;
+  top: 50%;
+  right: 1px;
+
+  color: white;
+  z-index: 999;
+}
+
+/* Fin Botones Fijos */
 
 .elem {
   padding: 20px;
@@ -80,16 +133,171 @@ main {
   color: white;
 }
 
-.project h2{
-  text-transform: uppercase;
-  font-weight: 600;
-  text-align: center;
-  color: white;
-  font-size: 1.4rem;
-  margin-bottom: 0;
+/* Menú de proyectos */
+
+.project-menu {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
-.img-project {
-  height: 600px;
-  width: 300px;
+.projects-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+  padding: 3rem;
 }
+
+.project-menu h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: grey;
+  margin-bottom: 4rem;
+}
+
+.project-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /* flex: 1; */
+  margin: 0;
+  padding: 0;
+}
+
+.project-list li {
+  list-style-type: none;
+  font-size: 2rem;
+  font-weight: 800;
+  color: white;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 4rem;
+}
+
+.project-list li:hover {
+  color:coral
+}
+
+.project-image {
+  border-radius: 50%;
+  height: 200px;
+  width: 200px;
+}
+
+/* fin menú de proyectos */
+
+
+/* Mora */
+
+.canvas-project {
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 80vw;
+  outline: none;
+  position: relative;
+}
+
+.intro-project-container {
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+}
+
+.mora-project-container {
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  background-color: #1a1a1a;
+  /* ver porqué apsa lo del margin */
+  margin: -10px; 
+}
+
+.colaboration-and-summary-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.text-summary {
+  flex: 2;
+  font-size: 2.4rem;
+  padding: 5rem;
+}
+
+.colaborators-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.collaborator {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.collaborator span {
+  font-weight: 900;
+}
+
+.colaborators-container .grey {
+  color: grey;
+}
+
+.images-gallery {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+}
+
+.image-cel-mora {
+  height: 600px;
+  width: 400px;
+  margin-right: 2rem;
+}
+
+.text-more-info {
+  font-size: 2rem;
+  width: 80%;
+}
+
+.links-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+.link-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.link-container a {
+  font-size: 1.5rem;
+  color: white;
+}
+
+.link-container span {
+  font-size: 1rem;
+  color: grey;
+}
+
+/* Fin Mora */
