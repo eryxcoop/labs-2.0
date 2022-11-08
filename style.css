@@ -106,8 +106,8 @@ main {
 }
 
 .fixed-icon-btn img{
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
 }
 
 .fixed-icon-btn h2{
@@ -138,18 +138,61 @@ main {
 
 /* Fin Botones Fijos */
 
+/* Intro */
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-container {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.logo-container .logo {
+  height: 64px;
+  width: 400px;
+}
+
+.arrow-container {
+  flex: 1;
+}
+
+.arrow-container .arrow-down {
+  height: 40px;
+  width: 40px;
+}
+
+.header p {
+  flex: 2;
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 4rem;
+  width: 50%;
+}
+
+/* Fin de intro */
+
 .elem {
   padding: 20px;
-  max-width: 500px;
+  width: 60%;
+  max-width: 700px;
 }
 
 .elem h2{
   text-transform: uppercase;
   font-weight: 300;
   text-align: center;
-  color: rgb(179, 179, 179);
-  font-size: 0.9rem;
   margin: 0;
+  color: white;
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
 }
 
 .elem p{
@@ -157,7 +200,7 @@ main {
   font-weight: 600;
   text-align: center;
   color: white;
-  font-size: 1.6rem;
+  font-size: 2rem;
   margin-bottom: 0;
   line-height: 1.78;
 }
@@ -171,7 +214,7 @@ main {
 }
 
 .intro-remark {
-  color: orange;
+  color: #FEB154;
 }
 
 /* Contactanos  */

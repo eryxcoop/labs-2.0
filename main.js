@@ -222,11 +222,18 @@ Array.from(projectImages).forEach( (p, i) => {
 });
 
 const projectTitles = document.getElementsByClassName("project_title");
+
 const moraImage =  document.getElementById("mora-image");
 const ssfImage =  document.getElementById("ssf-image");
 const auroraImage =  document.getElementById("aurora-image");
+const huespedImage =  document.getElementById("aurora-image");
 const faduVivaImage =  document.getElementById("fadu-image");
+
 const images = [moraImage, ssfImage, faduVivaImage, auroraImage];
+
+// Por default mostramos mora
+moraImage.style.display = "inline";
+
 Array.from(projectTitles).forEach( (p, i) => {
   p.addEventListener("mouseover", () => {
     images.map(i => i.style.display = "none");
@@ -234,5 +241,7 @@ Array.from(projectTitles).forEach( (p, i) => {
     if (i === 1){moraImage.style.display = "inline";}
     if (i === 2){faduVivaImage.style.display = "inline";}
     if (i === 3){auroraImage.style.display = "inline";}
+    if (i === 4){huespedImage.style.display = "inline";}
   });
 });
+
