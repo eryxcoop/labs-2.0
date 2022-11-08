@@ -105,7 +105,7 @@ scene.add(particlesMesh);
 
 // Background
 
-scene.background = new THREE.Color('#21282a');
+scene.background = new THREE.Color('#000113');
 
 // Scroll Animation
 
@@ -173,37 +173,66 @@ boxes.forEach((box, i) => {
 });
 
 
+// Abrir contact us
 
-// Abrir menu
+
 var tl = new gsap.timeline({ paused:true });
 
-const drawer = document.getElementById("menu-id");
+const drawer = document.getElementById("contact-us-id");
 const drawerVeil = document.getElementById("drawer-veil");
-const toggle = document.getElementById("menu-btn");
-const toggleAbout = document.getElementById("menu-btn");
-const spaceship = document.getElementById("spaceship-id");
-const closeDrawerBtn = document.getElementById("close-contact-us");
+const toggleOpenContact = document.getElementById("open-contact-us");
+const body = document.getElementById("body-id");
+const closeDrawerBtn = document.getElementById("close-contact-us-btn-id");
+
+console.log(closeDrawerBtn);
 
 // if the drawer is open or not
 let openDrawer = false;
 
 tl
-  .to(drawer, { delay: 0.1, duration:1, x: 0, ease: Power1.easeOut }, "<")
-  .to(drawerVeil, 0.15, { autoAlpha: 0.5 }, 0)
-  .to(toggleAbout, 0.05, { display: 'none' }, 0)
+  .to(body, {overflow: "hidden"})
+  .to(drawer, { display: "flex", ease: Power1.easeOut })
+  .to(drawerVeil, { autoAlpha: 0.5 }, 0)
   .reverse();
 
-toggle.onclick = () => {
+toggleOpenContact.onclick = () => {
   openDrawer = tl.reversed();
   tl.reversed( !tl.reversed() );
-  toggle.style.display = "none";
+  toggleOpenContact.style.display = "none";
 };
 
 const reverseDrawerTween = () => {
   tl.reverse();
   openDrawer = tl.reversed();
-  toggle.style.removeProperty('display');
+  toggleOpenContact.style.display = "flex";
 };
 
 drawerVeil.onclick = reverseDrawerTween;
 closeDrawerBtn.onclick = reverseDrawerTween;
+
+
+// Animacion de menu imagenes
+
+const projectImages = document.getElementsByClassName("project-image");
+Array.from(projectImages).forEach( (p, i) => {
+  console.log(i)
+  if (i !== 0) {
+    p.style.display = "none";
+  }
+});
+
+const projectTitles = document.getElementsByClassName("project_title");
+const moraImage =  document.getElementById("mora-image");
+const ssfImage =  document.getElementById("ssf-image");
+const auroraImage =  document.getElementById("aurora-image");
+const faduVivaImage =  document.getElementById("fadu-image");
+const images = [moraImage, ssfImage, faduVivaImage, auroraImage];
+Array.from(projectTitles).forEach( (p, i) => {
+  p.addEventListener("mouseover", () => {
+    images.map(i => i.style.display = "none");
+    if (i === 0){ssfImage.style.display = "inline";}
+    if (i === 1){moraImage.style.display = "inline";}
+    if (i === 2){faduVivaImage.style.display = "inline";}
+    if (i === 3){auroraImage.style.display = "inline";}
+  });
+});

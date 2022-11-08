@@ -6,17 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Eryxs Labs</title>
   </head>
-  <body>
-    <canvas id="bg" class="canvas-space"></canvas>   
-    <main>
+  <body id="body-id">
+    <canvas id="bg" class="canvas-space"></canvas>  
+    <main> 
       <div class="drawer-veil-2" id="drawer-veil-2"></div>
 
       <!-- Menu fijo -->
       <div id="logo">
         <img class="project-image" src="imagenes/logo.svg" alt="logo">
       </div>
-      <a id="projects-btn" href="#project-menu">Proyectos</a>
-      <button id="contact-us-btn" onclick="() => console.log(2)">CONTACTO</button>
+      <a id="projects-btn" href="#project-menu" class="fixed-icon-btn">
+        <img src="imagenes/project_box.png" alt="logo">
+        <h2>Proyectos</h2>
+      </a>
+      <button id="open-contact-us" class="fixed-icon-btn">
+        <img src="imagenes/spaceship.png" alt="logo">
+        <h2>Contacto</h2>
+      </button>
 
       <!-- Fin menu fijo -->
 
@@ -76,23 +82,34 @@
         <div class="projects-info">
           <h1>Proyectos</h1>
           <ul class="project-list">
-            <li>Sustentabilidad <br>sin Fronteras</li>
-            <li>MORA</li>
-            <li>FADU viva</li>
-            <li>Aurora</li>
-            <li>Fundación <br> Huesped</li>
+            <a href="mora.html" class="project_title">Sustentabilidad <br>sin Fronteras</a>
+            <a href="mora.html" class="project_title">MORA</a>
+            <a href="mora.html" class="project_title">FADU viva</a>
+            <a href="mora.html" class="project_title">Aurora</a>
+            <a href="mora.html" class="project_title">Fundación <br> Huesped</a>
           </ul>
         </div>
-        <a href="mora.html">
-          <img class="project-image" src="imagenes/fadu_viva.png" alt="ssf">
-        </a>
-        <img style="display:none" class="project-image" src="imagenes/mora.png" alt="mora">
-        <img style="display:none" class="project-image" src="imagenes/aurora.jpg" alt="mora">
-        <img style="display:none" class="project-image" src="imagenes/mora.png" alt="mora">
+        <div class="images-container">
+          <img class="project-image" id ="ssf-image" src="imagenes/ssf.png" alt="ssf">
+          <img class="project-image" id="mora-image" src="imagenes/mora.png" alt="mora">
+          <img class="project-image" id="fadu-image" src="imagenes/fadu_viva.png" alt="FADU viva">
+          <img class="project-image" id="aurora-image" src="imagenes/aurora.jpg" alt="aurora">
+          <img class="project-image" id="huesped-image" src="imagenes/mora.png" alt="fundacion huesped">
+        </div>
       </section>
 
-      <div class="drawer-veil" id="drawer-veil"></div>
-    </main>
+    <section class="contact-us-container" id="contact-us-id">
+      <div class="contact-us-info">
+        <h1>!Contactanos¡</h1>
+        <p>Si querés ser parte de nuestros proyectos envianos un mail y nos pondremos en contacto pronto.</p>
+        <h3>labs@eryx.com</h3>
+      </div>
+      <button id="close-contact-us-btn-id">&lt volver</button>
+    </section>
+
+    <div class="drawer-veil" id="drawer-veil"></div>
+
+  </main>
     
     <script type="module" src="/main.js"></script>
 

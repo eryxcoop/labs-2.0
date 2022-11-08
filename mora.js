@@ -116,7 +116,7 @@ glftLoader.load("earth.glb", (glft) => {
 
 // Background
 
-scene.background = new THREE.Color('#1a1a1a');
+scene.background = new THREE.Color('#000113');
 
 // Scroll Animation
 
