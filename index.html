@@ -12,29 +12,36 @@
       <div class="drawer-veil-2" id="drawer-veil-2"></div>
 
       <!-- Menu fijo -->
-      <div id="logo">
-        <img class="project-image" src="imagenes/logo.svg" alt="logo">
+      <div id="logo" >
+        <img id="logo-fixed-id" class="project-image" src="imagenes/logo.svg" alt="logo">
       </div>
+
       <a id="projects-btn" href="#project-menu" class="fixed-icon-btn">
         <img src="imagenes/project_box.png" alt="logo">
         <h2>Proyectos</h2>
       </a>
+
       <button id="open-contact-us" class="fixed-icon-btn">
         <img src="imagenes/spaceship.png" alt="logo">
         <h2>Contacto</h2>
       </button>
 
+      <a id="mision-btn-id" class="fixed-icon-btn" href="#start">
+        <img src="imagenes/mision.png" alt="logo">
+        <h2>Mision</h2>
+      </a>
+
       <!-- Fin menu fijo -->
 
-      <section class="page header">
+      <section class="page header" id="start">
         <div class="logo-container">
-          <img class="logo" src="imagenes/logo.svg" alt="logo">
+          <img class="logo" src="imagenes/logo.svg" alt="logo" id="logo-start-id">
         </div>
         <p>
           Exploramos distintos proyectos, ideas o iniciativas que involucren tecnologías en algún punto.
            Los proyectos de exploración nos ayudan a ampliar horizontes.
         </p>
-        <div class="arrow-container">
+        <div class="arrow-container" id="arrow-down-id">
           <img class="arrow-down" src="imagenes/flechas_abajo.png" alt="explore">
         </div>
       </section>
@@ -117,7 +124,7 @@
       <div class="contact-us-info">
         <h1>¡Contactanos!</h1>
         <p>Si querés ser parte de nuestros proyectos envianos un mail y nos pondremos en contacto pronto.</p>
-        <h3>labs@eryx.com</h3>
+        <button id="copy_to_clipboard">labs@eryx.com</button>
       </div>
       <button id="close-contact-us-btn-id">&lt volver</button>
     </section>

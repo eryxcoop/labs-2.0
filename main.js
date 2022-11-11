@@ -16,7 +16,8 @@ const renderer = new THREE.WebGLRenderer({
   canvas: document.querySelector('#bg'),
 });
 
-const glftLoader = new GLTFLoader()
+//const glftLoader = new GLTFLoader()
+
 
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.outputEncoding = THREE.sRGBEncoding;
@@ -69,7 +70,7 @@ const material = new THREE.PointsMaterial({
 const particleGeometry = new THREE.BufferGeometry;
 const particlesCnt = 16000;
 
-const posArray = new Float32Array(particlesCnt * 3);
+const posArray = new Float32Array(5334); // Arreglo por firefox, revisar
 
 const colors = [];
 const color = new THREE.Color();
@@ -135,6 +136,25 @@ function animate() {
 animate();
 
 
+/// COPY to clipboard mail
+
+function copyToClipboard() {
+  //source: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+  // Get the text field
+  //var copyText = document.getElementById("myInput");
+
+  // Select the text field
+  //copyText.select();
+  //copyText.setSelectionRange(0, 99999); // For mobile devices
+
+   // Copy the text inside the text field
+  navigator.clipboard.writeText('labs@eryx.com');
+  alert("copiado")
+}
+
+document.getElementById("copy_to_clipboard").onclick = () => copyToClipboard();
+
+
 ////// GSAP
 
 const boxes = gsap.utils.toArray('.elem');
@@ -184,7 +204,6 @@ const toggleOpenContact = document.getElementById("open-contact-us");
 const body = document.getElementById("body-id");
 const closeDrawerBtn = document.getElementById("close-contact-us-btn-id");
 
-console.log(closeDrawerBtn);
 
 // if the drawer is open or not
 let openDrawer = false;
@@ -245,3 +264,34 @@ Array.from(projectTitles).forEach( (p, i) => {
   });
 });
 
+
+// Animación del logo
+const fixedLogo =  document.getElementById("logo-fixed-id");
+//fixedLogo.style.display = "none";
+
+
+const startLogo =  document.getElementById("logo-start-id");
+
+gsap.from(startLogo, {
+  duration: 0.8,
+  ease: "power1.out",
+  display: 'inline',
+  once: true,
+  y: 100,
+  scrollTrigger: fixedLogo,
+  scrub: 0.5 ,
+  onComplete: () => console.log(fixedLogo)
+});
+
+
+// Animación flecha bajar
+
+const arrowScrollDown =  document.getElementById("arrow-down-id");
+
+gsap.to(arrowScrollDown, {
+  duration: 1.3,
+  y: "+=20px",
+  yoyo: true,
+  repeat: -1,
+  ease: "power2.easeOut"
+});

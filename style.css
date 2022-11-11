@@ -91,6 +91,14 @@ main {
   z-index: 999;
 }
 
+#mision-btn-id {
+  position: fixed;
+  font-weight: 200;
+  bottom: 0;
+  left: 1px;
+  z-index: 999;
+}
+
 .fixed-icon-btn {
   border: none;
   background: none;
@@ -120,7 +128,7 @@ main {
   position: fixed;
   font-weight: 200;
   top: 50%;
-  left: 1px;
+  left: 2rem;
 
   color: white;
   z-index: 999;
@@ -130,7 +138,7 @@ main {
   position: fixed;
   font-weight: 200;
   top: 50%;
-  right: 1px;
+  right: 2rem;
 
   color: white;
   z-index: 999;
@@ -256,10 +264,16 @@ main {
   color: white;
 }
 
-.contact-us-container h3{
+.contact-us-container button{
+  border: none;
+  background: none;
   color: #FEB154;
   font-size: 2rem;
   font-weight: 600;
+}
+
+.contact-us-container button:hover{
+  color: #ffd39d;
 }
 
 #close-contact-us-btn-id {
@@ -394,18 +408,18 @@ main {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   position: absolute;
   top: 0;
   left: 0;
   height: 100%;
-  width: 50%;
+  width: 40%;
   margin-left: 18rem;
 }
 
 .intro-project-container p{
   font-size: 2.2rem;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 .mora-project-container {
@@ -418,6 +432,10 @@ main {
   background-color: #000113;
   /* ver porqué apsa lo del margin */
   margin: -10px; 
+}
+
+.mora-logo {
+  height: 80px;
 }
 
 .colaboration-and-summary-container {
@@ -505,6 +523,10 @@ iframe {
 .link-container a {
   font-size: 1.5rem;
   color: white;
+}
+
+.link-container a:hover {
+  color: #FEB154;
 }
 
 .link-container span {

@@ -11,14 +11,26 @@
       <div class="drawer-veil-2" id="drawer-veil-2"></div>
 
       <!-- Menu fijo -->
-      <div id="logo">
-        <img class="project-image" src="imagenes/logo.svg" alt="logo">
+      <div id="logo" >
+        <img id="logo-fixed-id" class="project-image" src="imagenes/logo.svg" alt="logo">
       </div>
-      <a id="projects-btn" href="#project-menu">Proyectos</a>
-      <button id="contact-us-btn" onclick="() => console.log(2)">CONTACTO</button>
+      <a id="projects-btn" href="index.html#project-menu" class="fixed-icon-btn">
+        <img src="imagenes/project_box.png" alt="logo">
+        <h2>Proyectos</h2>
+      </a>
+
+      <a id="mision-btn-id" class="fixed-icon-btn" href="index.html#start">
+        <img src="imagenes/mision.png" alt="logo">
+        <h2>Mision</h2>
+      </a>
 
       <a id="previous-btn" href="ssf.html">Ant</a>
       <a id="next-btn" href="ssf.html">Sig</a>
+
+      <button id="open-contact-us" class="fixed-icon-btn">
+        <img src="imagenes/spaceship.png" alt="logo">
+        <h2>Contacto</h2>
+      </button>
 
       <!-- Fin menu fijo -->
 
@@ -26,9 +38,7 @@
       <canvas id="astronaut-canvas" class="canvas-project"></canvas>
 
       <div class="intro-project-container">
-        <h1>
-          MORA
-        </h1>
+        <img class="mora-logo" src="imagenes/mora_logo.png" alt="logo">
         <p>
           Mora es un juego que busca motivar el aprendizaje
           de matemáticas a través de la ciencia colectiva
