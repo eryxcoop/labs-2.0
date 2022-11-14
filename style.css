@@ -282,7 +282,7 @@ main {
   color: #ffd39d;
 }
 
-#close-contact-us-btn-id {
+.go-back-btn {
   background: none;
   border: none;
   font-size: 1.4rem;
@@ -292,7 +292,29 @@ main {
   flex: 1
 }
 
+.go-back-btn:hover {
+  color: rgb(187, 177, 177);
+}
+
 /* Fin de contactanos */
+
+/* Cargando */
+
+.loading-container {
+  height: 100vh;
+  z-index: 1000;
+  background-color: black;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: fixed;
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fin de cargando */
 
 /* Menú de proyectos */
 
@@ -391,7 +413,7 @@ main {
   border-radius: 50%;
   height: 200px;
   width: 200px;
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 
 /* fin menú de proyectos */
@@ -429,7 +451,7 @@ main {
 }
 
 .mora-project-container {
-  padding: 18rem;
+  padding: 5rem 18rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -505,6 +527,7 @@ main {
 
 .text-more-info {
   font-size: 1.8rem;
+  font-weight: 100;
   width: 100%;
   text-align: justify;
 }

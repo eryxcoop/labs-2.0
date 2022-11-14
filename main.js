@@ -7,6 +7,25 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 // Setup
 
+// const loadingManager = new THREE.LoadingManager( () => {
+	
+//   const loadingScreen = document.getElementById( 'loading-screen' );
+//   loadingScreen.classList.add( 'fade-out' );
+  
+//   console.log('asd')
+//   // optional: remove loader from DOM via event listener
+//   loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
+  
+// } );
+
+
+// function onTransitionEnd( event ) {
+
+// 	const element = event.target;
+// 	element.remove();
+	
+// }
+
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1);
@@ -70,7 +89,9 @@ const material = new THREE.PointsMaterial({
 const particleGeometry = new THREE.BufferGeometry;
 const particlesCnt = 16000;
 
-const posArray = new Float32Array(5334); // Arreglo por firefox, revisar
+// const posArray = new Float32Array(5334); // Arreglo por firefox, revisar
+const posArray = new Float32Array(16000); // Arreglo por firefox, revisar
+
 
 const colors = [];
 const color = new THREE.Color();
