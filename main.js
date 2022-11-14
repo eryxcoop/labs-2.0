@@ -7,7 +7,7 @@ import { gsap, Power1 } from "./node_modules/gsap/all";
 
 //import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollTrigger } from "./node_modules/gsap/ScrollTrigger";
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+//import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
 // Setup
