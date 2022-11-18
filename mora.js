@@ -1,4 +1,3 @@
-import './style.css';
 import * as THREE from 'three';
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -15,6 +14,8 @@ const renderer = new THREE.WebGLRenderer({
   antialias: true,
   canvas: document.querySelector('#astronaut-canvas'),
 });
+
+const clock = new THREE.Clock();
 
 const glftLoader = new GLTFLoader();
 
@@ -40,7 +41,8 @@ const light = new THREE.DirectionalLight(colorLight, intensity);
 light.position.set(-1, 2, 4);
 scene.add(light);
 
-const pointLight = new THREE.PointLight(0xff5733);
+//const pointLight = new THREE.PointLight(0xff5733);
+const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
 
 const ambientLight = new THREE.AmbientLight(0xffffff);
@@ -69,7 +71,8 @@ const material = new THREE.PointsMaterial({
 const particleGeometry = new THREE.BufferGeometry;
 const particlesCnt = 16000;
 
-const posArray = new Float32Array(particlesCnt * 3);
+//const posArray = new Float32Array(particlesCnt * 3);
+const posArray = new Float32Array(5333);
 
 const colors = [];
 const color = new THREE.Color();
@@ -106,11 +109,12 @@ scene.add(particlesMesh);
 // Earth
 
 let earth = undefined
-glftLoader.load("earth.glb", (glft) => {
+glftLoader.load("mora_astronauta.glb", (glft) => {
   earth = glft.scene;
   scene.add(earth);
-  earth.position.z = -3;
-  earth.position.x = 2;
+  earth.position.z = -6;
+  earth.position.x = 4;
+  earth.position.y = -2;
 })
 
 
@@ -130,11 +134,15 @@ camera.rotation.y = t * -0.00002;
 // Animation Loop
 
 function animate() {
-  requestAnimationFrame(animate);
+  const t = requestAnimationFrame(animate);
 
   // controls.update();
 
   particlesMesh.rotation.y += 0.001;
+  const time = clock.getElapsedTime();
+  
+  earth.position.y = Math.cos( time ) * 0.2 - 2;
+  earth.rotation.x = 0.2;
 
   renderer.render(scene, camera);
 }

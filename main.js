@@ -1,11 +1,11 @@
-import * as THREE from './node_modules/three/build/three.module.js';
+import * as THREE from 'three';
 // import * as THREE from three;
 //import { gsap, Power1 } from "gsap";
 
-import { gsap, Power1 } from "./node_modules/gsap/all";
+import { gsap, Power1 } from "gsap";
 
-//import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ScrollTrigger } from "./node_modules/gsap/ScrollTrigger";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+//import { ScrollTrigger } from "./node_modules/gsap/ScrollTrigger.js";
 //import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
 
