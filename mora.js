@@ -1,14 +1,143 @@
 import * as THREE from 'three';
 import { gsap, Power1 } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { Draggable } from "gsap/Draggable";
+
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+
+// Subrayado//
+
+
+gsap.registerPlugin(ScrollTrigger);
+
+
+gsap.utils.toArray(".text-highlight").forEach((highlight) => {
+  ScrollTrigger.create({
+    trigger: highlight,
+    start: "-100px center",
+    onEnter: () => highlight.classList.add("active")
+  });
+});
+
+const setHighlightStyle = (value) =>
+  document.body.setAttribute("data-highlight", value);
+
+setHighlightStyle('underline');
+
+// slide
+
+gsap.registerPlugin(Draggable);
+
+var slideDelay = 3.5;
+var slideDuration = 0.5;
+var wrap = true;
+
+var slides = document.querySelectorAll(".slide");
+var progressWrap = gsap.utils.wrap(0, 1);
+
+var numSlides = slides.length;
+console.log(numSlides);
+
+gsap.set(slides, {
+  xPercent: i => i * 100
+});
+
+var wrapX = gsap.utils.wrap(-100, (numSlides - 1) * 100);
+var timer = gsap.delayedCall(slideDelay, autoPlay);
+
+var animation = gsap.to(slides, {
+  xPercent: "+=" + (numSlides * 100),
+  duration: 1,
+  ease: "none",
+  paused: true,
+  repeat: -1,
+  modifiers: {
+    xPercent: wrapX
+  }
+});
+
+var proxy = document.createElement("div");
+var slideAnimation = gsap.to({}, {});
+var slideWidth = 0;
+var wrapWidth = 0;
+
+
+var draggable = new Draggable(proxy, {
+  trigger: ".slides-container",
+  onPress: updateDraggable,
+  onDrag: updateProgress,
+  onThrowUpdate: updateProgress,
+  snap: {     
+    x: snapX
+  }
+});
+
+function updateDraggable() {
+  timer.restart(true);
+  slideAnimation.kill();
+  this.update();
+}
+
+function animateSlides(direction) {
+    
+  timer.restart(true);
+  slideAnimation.kill();
+  var x = snapX(gsap.getProperty(proxy, "x") + direction * slideWidth);
+  
+  slideAnimation = gsap.to(proxy, {
+    x: x,
+    duration: slideDuration,
+    onUpdate: updateProgress
+  });  
+}
+
+function autoPlay() {  
+  if (draggable.isPressed || draggable.isDragging || draggable.isThrowing) {
+    timer.restart(true);
+  } else {
+    animateSlides(-1);
+  }
+}
+
+function updateProgress() { 
+  animation.progress(progressWrap(gsap.getProperty(proxy, "x") / wrapWidth));
+}
+
+function snapX(value) {
+  let snapped = gsap.utils.snap(slideWidth, value);
+  return wrap ? snapped : gsap.utils.clamp(-slideWidth * (numSlides - 1), 0, snapped);
+}
+
+function resize() {
+  
+  var norm = (gsap.getProperty(proxy, "x") / wrapWidth) || 0;
+  
+  slideWidth = slides[0].offsetWidth;
+  wrapWidth = slideWidth * numSlides;
+  
+  wrap || draggable.applyBounds({minX: -slideWidth * (numSlides - 1), maxX: 0});
+  
+  gsap.set(proxy, {
+    x: norm * wrapWidth
+  });
+  
+  animateSlides(0);
+  slideAnimation.progress(1);
+}
+
+if (numSlides > 0){
+  resize();
+  window.addEventListener("resize", resize);
+}
 
 
 // Setup
 
 const scene = new THREE.Scene();
 
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1);
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
 const renderer = new THREE.WebGLRenderer({
   antialias: true,
@@ -19,11 +148,18 @@ const clock = new THREE.Clock();
 
 const glftLoader = new GLTFLoader();
 
+// Optional: Provide a DRACOLoader instance to decode compressed mesh data
+const dracoLoader = new DRACOLoader();
+let decoderPath = 'https://www.gstatic.com/draco/v1/decoders/';
+
+dracoLoader.setDecoderPath(decoderPath );
+glftLoader.setDRACOLoader( dracoLoader );
+
+
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-camera.position.setX(-3);
+
 
 renderer.render(scene, camera);
 
@@ -38,15 +174,23 @@ window.addEventListener('resize', () => {
 
 const colorLight = 0xffffff, intensity = 1;
 const light = new THREE.DirectionalLight(colorLight, intensity);
-light.position.set(-1, 2, 4);
-scene.add(light);
+const directionalLight = new THREE.DirectionalLight( 0xffffff, 1 );
+
+directionalLight.position.set(4, 0, 54);
+scene.add(directionalLight);
 
 //const pointLight = new THREE.PointLight(0xff5733);
-const pointLight = new THREE.PointLight(0xffffff);
-pointLight.position.set(5, 5, 5);
+// const pointLight = new THREE.PointLight(0xb7b7b7);
+// pointLight.position.set(0, 0, 0);
+// scene.add(pointLight);
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(light, pointLight);
+const pointLight = new THREE.PointLight( 0xffffff);
+pointLight.position.set( -2 , -2  , -6  );
+
+scene.add( pointLight );
+
+const ambientLight = new THREE.AmbientLight(0xd16161);
+scene.add(ambientLight);
 
 //Plane
 
@@ -130,6 +274,19 @@ camera.position.z = t * 0.0001;
 camera.position.x = t * -0.00005;
 camera.rotation.y = t * -0.00002;
 
+function moveSpaceWithMouse(e) {
+  camera.position.y = e.clientY * 0.0001;
+  camera.position.x = e.clientX * -0.00005;
+
+  if (earth) {
+    earth.rotation.x = e.clientX * -0.2;
+    earth.rotation.y = e.clientY * -0.001;
+  }
+
+}
+
+document.addEventListener('mousemove', moveSpaceWithMouse)
+
 
 // Animation Loop
 
@@ -141,8 +298,10 @@ function animate() {
   particlesMesh.rotation.y += 0.001;
   const time = clock.getElapsedTime();
   
-  earth.position.y = Math.cos( time ) * 0.2 - 2;
-  earth.rotation.x = 0.2;
+  if (earth) {
+    earth.position.y = Math.cos( time ) * 0.2 - 2;
+    earth.rotation.x = 0.2;
+  }
 
   renderer.render(scene, camera);
 }
@@ -222,3 +381,4 @@ const reverseDrawerTween = () => {
 
 drawerVeil.onclick = reverseDrawerTween;
 closeDrawerBtn.onclick = reverseDrawerTween;
+

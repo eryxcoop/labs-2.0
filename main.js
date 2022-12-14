@@ -177,7 +177,7 @@ function copyToClipboard() {
   alert("copiado")
 }
 
-document.getElementById("copy_to_clipboard").onclick = () => copyToClipboard();
+//document.getElementById("copy_to_clipboard").onclick = () => copyToClipboard();
 
 
 ////// GSAP
@@ -226,6 +226,8 @@ var tl = new gsap.timeline({ paused:true });
 const drawer = document.getElementById("contact-us-id");
 const drawerVeil = document.getElementById("drawer-veil");
 const toggleOpenContact = document.getElementById("open-contact-us");
+const missionBtn = document.getElementById("mision-btn-id");
+const projectsBtn = document.getElementById("projects-btn");
 const body = document.getElementById("body-id");
 const closeDrawerBtn = document.getElementById("close-contact-us-btn-id");
 
@@ -243,12 +245,16 @@ toggleOpenContact.onclick = () => {
   openDrawer = tl.reversed();
   tl.reversed( !tl.reversed() );
   toggleOpenContact.style.display = "none";
+  missionBtn.style.display = "none";
+  projectsBtn.style.display = "none";
 };
 
 const reverseDrawerTween = () => {
   tl.reverse();
   openDrawer = tl.reversed();
   toggleOpenContact.style.display = "flex";
+  missionBtn.style.display = "flex";
+  projectsBtn.style.display = "flex";
 };
 
 drawerVeil.onclick = reverseDrawerTween;
