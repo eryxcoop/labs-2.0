@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style.css" >
+    <title>Eryxs Labs</title>
+  </head>
+  <body>   
+    <main>
+      <div class="drawer-veil-2" id="drawer-veil-2"></div>
+
+      <!-- Menu fijo -->
+      <div id="logo" >
+        <img id="logo-fixed-id" class="project-image" src="../imagenes/logo.svg" alt="logo">
+      </div>
+      <a id="projects-btn" href="index.html#project-menu" class="fixed-icon-btn">
+        <img src="../imagenes/project_box.png" alt="logo">
+        <h2>Proyectos</h2>
+      </a>
+
+      <a id="mision-btn-id" class="fixed-icon-btn" href="index.html#start">
+        <img src="../imagenes/mision.png" alt="logo">
+        <h2>Mision</h2>
+      </a>
+
+      <button id="open-contact-us" class="fixed-icon-btn">
+        <img src="../imagenes/spaceship.png" alt="logo">
+        <h2>Contacto</h2>
+      </button>
+
+      <!-- Fin menu fijo -->
+
+      <!-- Proyecto Mora -->
+      <canvas id="astronaut-canvas" class="canvas-project"></canvas>
+
+      <div class="intro-project-container">
+        <img class="mora-logo" src="../imagenes/mora_logo.png" alt="logo">
+        <p>
+          Mora es un juego que busca motivar el aprendizaje
+          de matemáticas a través de la ciencia colectiva
+        </p>
+      </div>
+
+      <section class="mora-project-container">
+
+        <div class="colaboration-and-summary-container">
+          <p class="text-summary">
+            Mora es una aplicación 
+            <mark class="text-highlight"> orientada a estudiantes del primer ciclo de escuela primaria</mark>
+            (6 a 8 años) que busca motivar la práctica de habilidades de aritmética
+             básica a través de una aproximación lúdica
+          </p>
+          <div class="colaborators-container">
+              <h3 class="grey">Para este proyecto trabajamos con</h3>
+              <div class="collaborator">
+                  <p>Sabri y la Colo <span>(Sin Patrón)</span></p>
+                  <a class="grey" href="https://www.sin-patron.com.ar/" target="_blank"> https://www.sin-patron.com.ar/</a>
+              </div>
+              <div class="collaborator">
+                <p>Juan Manuel Garrido <span>(El Gato y la Caja)</span></p>
+                <a class="grey" href="https://elgatoylacaja.com/" target="_blank"> https://elgatoylacaja.com/</a>
+            </div>
+            <div class="collaborator">
+                <p>Andrés Rieznik, Valeria Edelstein, Leonardo Más <br> <span>(Equipo pedagógico)</span></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="images-gallery">
+          <img class="image-cel-mora" src="../imagenes/mora1.png" alt="mora">
+          <img class="image-cel-mora" src="../imagenes/mora2.png" alt="mora">
+          <img class="image-cel-mora" src="../imagenes/mora3.png" alt="mora">
+        </div>
+
+        <p class="text-more-info">
+            El objetivo del juego es lograr conquistar el Sistema Solar
+            <mark class="text-highlight"> mediante la resolución de cuentas y ejercicios</mark>, 
+             viajando en una nave junto con Mora, una inteligencia artificial que actúa a modo de copilota. Planeta a planeta y pantalla a pantalla surgen nuevos desafíos y un nuevo mundo de personajes por descubrir.
+        </p>
+
+        <p class="text-more-info">
+          Los desafíos principales del proyecto eran, por un lado, que
+          <mark class="text-highlight">contara una historia que fuera visualmente atractiva. </mark>
+           Por el otro,también debía tener los 
+           <mark class="text-highlight">contenidos matemáticos necesarios </mark>
+          adaptados para el público objetivo. 
+        </p>
+
+        <!-- iframe video -->
+        <iframe width="1216" height="480" src="https://www.youtube.com/embed/X3okRNIdjSY" title="MORA" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+        <div class="links-container">
+            <div class="link-container">
+                <span>Para ver descargar la app ingrese a este link:</span>
+                <a href="https:/google-play/descargas/mora">https:/google-play/descargas/mora</a>
+            </div>
+            <div class="link-container">
+                <span>Artículos y papers destacados:</span>
+                <a href="https:/medium/papers/mora">https:/medium/papers/mora</a>
+            </div>
+        </div>
+
+        <a href="index.html#project-menu" class="go-back-btn" id="close-contact-us-btn-id">&lt volver a proyectos</a>
+
+      </section>
+
+      <div class="drawer-veil" id="drawer-veil"></div>
+    </main>
+    
+    <script src="./mora.js" type="module"></script>
+
+
+  </body>
+</html>
