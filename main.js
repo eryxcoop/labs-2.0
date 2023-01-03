@@ -287,10 +287,10 @@ moraImage.style.display = "inline";
 Array.from(projectTitles).forEach( (p, i) => {
   p.addEventListener("mouseover", () => {
     images.map(i => i.style.display = "none");
-    if (i === 0){ssfImage.style.display = "inline";}
-    if (i === 1){moraImage.style.display = "inline";}
+    if (i === 0){moraImage.style.display = "inline";}
+    if (i === 3){ssfImage.style.display = "inline";}
     if (i === 2){faduVivaImage.style.display = "inline";}
-    if (i === 3){auroraImage.style.display = "inline";}
+    if (i === 1){auroraImage.style.display = "inline";}
     if (i === 4){huespedImage.style.display = "inline";}
   });
 });

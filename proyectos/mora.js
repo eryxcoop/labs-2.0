@@ -38,7 +38,6 @@ var slides = document.querySelectorAll(".slide");
 var progressWrap = gsap.utils.wrap(0, 1);
 
 var numSlides = slides.length;
-console.log(numSlides);
 
 gsap.set(slides, {
   xPercent: i => i * 100
@@ -303,6 +302,7 @@ function animate() {
   if (earth) {
     earth.position.y = Math.cos( time ) * 0.2 - 2;
     earth.rotation.x = 0.2;
+    earth.rotation.y = time * -0.2;
   }
 
   renderer.render(scene, camera);
@@ -361,26 +361,26 @@ const spaceship = document.getElementById("spaceship-id");
 const closeDrawerBtn = document.getElementById("close-contact-us");
 
 // if the drawer is open or not
-let openDrawer = false;
+// let openDrawer = false;
 
-tl
-  .to(drawer, { delay: 0.1, duration:1, x: 0, ease: Power1.easeOut }, "<")
-  .to(drawerVeil, 0.15, { autoAlpha: 0.5 }, 0)
-  .to(toggleAbout, 0.05, { display: 'none' }, 0)
-  .reverse();
+// tl
+//   .to(drawer, { delay: 0.1, duration:1, x: 0, ease: Power1.easeOut }, "<")
+//   .to(drawerVeil, 0.15, { autoAlpha: 0.5 }, 0)
+//   .to(toggleAbout, 0.05, { display: 'none' }, 0)
+//   .reverse();
 
-toggle.onclick = () => {
-  openDrawer = tl.reversed();
-  tl.reversed( !tl.reversed() );
-  toggle.style.display = "none";
-};
+// toggle.onclick = () => {
+//   openDrawer = tl.reversed();
+//   tl.reversed( !tl.reversed() );
+//   toggle.style.display = "none";
+// };
 
-const reverseDrawerTween = () => {
-  tl.reverse();
-  openDrawer = tl.reversed();
-  toggle.style.removeProperty('display');
-};
+// const reverseDrawerTween = () => {
+//   tl.reverse();
+//   openDrawer = tl.reversed();
+//   toggle.style.removeProperty('display');
+// };
 
-drawerVeil.onclick = reverseDrawerTween;
-closeDrawerBtn.onclick = reverseDrawerTween;
+// drawerVeil.onclick = reverseDrawerTween;
+// closeDrawerBtn.onclick = reverseDrawerTween;
 
