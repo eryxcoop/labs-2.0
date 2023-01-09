@@ -254,7 +254,7 @@ scene.add(particlesMesh);
 // modelo3d
 
 let modelo3d = undefined
-glftLoader.load("aurora_low.glb", (glft) => {
+glftLoader.load("aurora_low_stickers.glb", (glft) => {
   modelo3d = glft.scene;
   scene.add(modelo3d);
   modelo3d.position.z = -6;

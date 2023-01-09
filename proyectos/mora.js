@@ -6,11 +6,26 @@ import { Draggable } from "gsap/Draggable";
 
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
+import fragmentShader from '../fragmentShader.js';
+
 
 // Subrayado//
 
 
 gsap.registerPlugin(ScrollTrigger);
+
+function vertexShader() {
+  return `
+    varying vec3 vUv; 
+
+    void main() {
+      vUv = position; 
+
+      vec4 modelViewPosition = modelViewMatrix * vec4(position, 1.0);
+      gl_Position = projectionMatrix * modelViewPosition; 
+    }
+  `
+}
 
 
 gsap.utils.toArray(".text-highlight").forEach((highlight) => {
@@ -208,10 +223,29 @@ plane.position.y = 0;
 plane.rotation.x = 181;
 
 // Stars
-const material = new THREE.PointsMaterial({
+let material = new THREE.PointsMaterial({
   size: 0.001,
   vertexColors: true 
 })
+
+// const textureStar = new THREE.TextureLoader().load('../particle_3.webp');
+// material = new THREE.ShaderMaterial({
+//   extensions: {
+//     derivatives: "#extension GL_DES_standard_derivatives: enable"
+//   },
+//   side: THREE.DoubleSide,
+//   size: 0.001,
+//   depthTest: false,
+//   transparent: true,
+//   uniforms: {
+//     uTexture : {value: textureStar},
+//     time: { type: "f", value: 1.0 },
+//     uColor: {value: new THREE.Color("#f7b373")},
+//     resolution: { type: "v2", value: new THREE.Vector2() }
+//   },
+//   fragmentShader: fragmentShader(),
+//   vertexShader: vertexShader(),
+// });
 
 const particleGeometry = new THREE.BufferGeometry;
 const particlesCnt = 16000;
@@ -246,7 +280,6 @@ for(let i = 0; i < particlesCnt; i+=3) {
 
 particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
 particleGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
-
 
 const particlesMesh = new THREE.Points(particleGeometry, material)
 scene.add(particlesMesh);

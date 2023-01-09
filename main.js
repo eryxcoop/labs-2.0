@@ -4,161 +4,138 @@ import * as THREE from 'three';
 
 import { gsap, Power1 } from "gsap";
 
+import Sketch from "./Sketch"
+
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-//import { ScrollTrigger } from "./node_modules/gsap/ScrollTrigger.js";
-//import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 
-
-// Setup
-
-// const loadingManager = new THREE.LoadingManager( () => {
-	
-//   const loadingScreen = document.getElementById( 'loading-screen' );
-//   loadingScreen.classList.add( 'fade-out' );
-  
-//   console.log('asd')
-//   // optional: remove loader from DOM via event listener
-//   loadingScreen.addEventListener( 'transitionend', onTransitionEnd );
-  
-// } );
-
-
-// function onTransitionEnd( event ) {
-
-// 	const element = event.target;
-// 	element.remove();
-	
-// }
-
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1);
-
-const renderer = new THREE.WebGLRenderer({
-  antialias: true,
-  canvas: document.querySelector('#bg'),
+new Sketch({
+  dom: document.getElementById("container")
 });
 
-//const glftLoader = new GLTFLoader()
+
+// const scene = new THREE.Scene();
+// const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1);
+// const renderer = new THREE.WebGLRenderer({
+//   antialias: true,
+//   canvas: document.querySelector('#bg'),
+// });
+// renderer.setPixelRatio(window.devicePixelRatio);
+// renderer.outputEncoding = THREE.sRGBEncoding;
+// renderer.setSize(window.innerWidth, window.innerHeight);
+// camera.position.setZ(30);
+// camera.position.setX(-3);
+
+// renderer.render(scene, camera);
+
+// window.addEventListener('resize', () => {
+//   renderer.setSize(window.innerWidth, window.innerHeight);
+//   camera.aspect = window.innerWidth/ window.innerHeight;
+
+//   camera.updateProjectionMatrix();
+// })
+
+// // Lights
+
+// const colorLight = 0xffffff, intensity = 1;
+// const light = new THREE.DirectionalLight(colorLight, intensity);
+// light.position.set(-1, 2, 4);
+// scene.add(light);
+
+// const pointLight = new THREE.PointLight(0xff5733);
+// pointLight.position.set(5, 5, 5);
+
+// const ambientLight = new THREE.AmbientLight(0xffffff);
+// scene.add(light, pointLight);
+
+// //Plane
+
+// const planeGeometry = new THREE.PlaneGeometry(3,3,64, 64)
+
+// const planeMaterial = new THREE.MeshStandardMaterial({color:'red'})
+
+// const plane = new THREE.Mesh(planeGeometry, planeMaterial);
+
+// //scene.add(plane);
+// plane.position.z = -5;
+// plane.position.x = 0;
+// plane.position.y = 0;
+// plane.rotation.x = 181;
+
+// // Stars
+// const material = new THREE.PointsMaterial({
+//   size: 0.001,
+//   vertexColors: true 
+// })
+
+// const particleGeometry = new THREE.BufferGeometry;
+// const particlesCnt = 16000;
+
+// // const posArray = new Float32Array(5334); // Arreglo por firefox, revisar
+// const posArray = new Float32Array(16000); // Arreglo por firefox, revisar
 
 
-renderer.setPixelRatio(window.devicePixelRatio);
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
-camera.position.setX(-3);
+// const colors = [];
+// const color = new THREE.Color();
+// const n = 1000, n2 = n / 2; // particles spread in the cube
 
-renderer.render(scene, camera);
+// for (let i = 0; i < particlesCnt; i++) {
+//   //xyz
+//   posArray[i] = (Math.random() - 0.5);
+// }
 
-window.addEventListener('resize', () => {
-  renderer.setSize(window.innerWidth, window.innerHeight);
-  camera.aspect = window.innerWidth/ window.innerHeight;
+// for(let i = 0; i < particlesCnt; i+=3) {
+//   // colors
 
-  camera.updateProjectionMatrix();
-})
+//   const x = Math.random() * n - n2;
+//   const y = Math.random() * n - n2;
+//   const z = Math.random() * n - n2;
 
-// Lights
+//   const vx = ( x / n ) + 0.5;
+//   const vy = ( y / n ) + 0.5;
+//   const vz = ( z / n ) + 0.5;
 
-const colorLight = 0xffffff, intensity = 1;
-const light = new THREE.DirectionalLight(colorLight, intensity);
-light.position.set(-1, 2, 4);
-scene.add(light);
+//   color.setRGB( vx, vy, vz );
 
-const pointLight = new THREE.PointLight(0xff5733);
-pointLight.position.set(5, 5, 5);
+//   colors.push( color.r, color.g, color.b );
+// }
 
-const ambientLight = new THREE.AmbientLight(0xffffff);
-scene.add(light, pointLight);
-
-//Plane
-
-const planeGeometry = new THREE.PlaneGeometry(3,3,64, 64)
-
-const planeMaterial = new THREE.MeshStandardMaterial({color:'red'})
-
-const plane = new THREE.Mesh(planeGeometry, planeMaterial);
-
-//scene.add(plane);
-plane.position.z = -5;
-plane.position.x = 0;
-plane.position.y = 0;
-plane.rotation.x = 181;
-
-// Stars
-const material = new THREE.PointsMaterial({
-  size: 0.001,
-  vertexColors: true 
-})
-
-const particleGeometry = new THREE.BufferGeometry;
-const particlesCnt = 16000;
-
-// const posArray = new Float32Array(5334); // Arreglo por firefox, revisar
-const posArray = new Float32Array(16000); // Arreglo por firefox, revisar
+// particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+// particleGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
 
 
-const colors = [];
-const color = new THREE.Color();
-const n = 1000, n2 = n / 2; // particles spread in the cube
+// const particlesMesh = new THREE.Points(particleGeometry, material)
+// scene.add(particlesMesh);
 
-for (let i = 0; i < particlesCnt; i++) {
-  //xyz
-  posArray[i] = (Math.random() - 0.5);
-}
+// // Background
 
-for(let i = 0; i < particlesCnt; i+=3) {
-  // colors
+// scene.background = new THREE.Color('#000113');
 
-  const x = Math.random() * n - n2;
-  const y = Math.random() * n - n2;
-  const z = Math.random() * n - n2;
+// // Scroll Animation
 
-  const vx = ( x / n ) + 0.5;
-  const vy = ( y / n ) + 0.5;
-  const vz = ( z / n ) + 0.5;
+// function moveCamera() {
+//   const t = document.body.getBoundingClientRect().top;
 
-  color.setRGB( vx, vy, vz );
+//   camera.position.z = t * 0.0001;
+//   camera.position.x = t * -0.00005;
+//   camera.rotation.y = t * -0.00002;
+// }
 
-  colors.push( color.r, color.g, color.b );
-}
+// document.body.onscroll = moveCamera;
+// moveCamera();
 
-particleGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-particleGeometry.setAttribute( 'color', new THREE.Float32BufferAttribute( colors, 3 ) );
+// // Animation Loop
 
+// function animate() {
+//   requestAnimationFrame(animate);
 
-const particlesMesh = new THREE.Points(particleGeometry, material)
-scene.add(particlesMesh);
+//   // controls.update();
 
-// Background
+//   particlesMesh.rotation.y += 0.001;
 
-scene.background = new THREE.Color('#000113');
+//   renderer.render(scene, camera);
+// }
 
-// Scroll Animation
-
-function moveCamera() {
-  const t = document.body.getBoundingClientRect().top;
-
-  camera.position.z = t * 0.0001;
-  camera.position.x = t * -0.00005;
-  camera.rotation.y = t * -0.00002;
-}
-
-document.body.onscroll = moveCamera;
-moveCamera();
-
-// Animation Loop
-
-function animate() {
-  requestAnimationFrame(animate);
-
-  // controls.update();
-
-  particlesMesh.rotation.y += 0.001;
-
-  renderer.render(scene, camera);
-}
-
-animate();
+// animate();
 
 
 /// COPY to clipboard mail
